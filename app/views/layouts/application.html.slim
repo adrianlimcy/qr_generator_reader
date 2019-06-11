@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title
+      | Generate All The QR ... and read them
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    == stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    == javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+  body
+    nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+      == link_to "#{image_tag("ricoh.png", width: 150, class: "d-inline-block align-top")}".html_safe, home_index_path
+      button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+        span class="navbar-toggler-icon"
+      div class="collapse navbar-collapse" id="navbarNav"
+        ul class="navbar-nav mr-auto"
+          li class="nav-item active"
+            a class="nav-link" href="#"
+              | QR Generator | Reader
+              span class="sr-only"
+          li class="nav-item dropdown"
+            a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              | Something
+            .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+              | Something
+            li class="nav-item"
+            == link_to "Products", products_path, class: "nav-link"
+          li class="nav-item"
+            a class="nav-link" href="#"
+              | Reports
+          li class="nav-item dropdown"
+            a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              | Administrators
+            .dropdown-menu aria-labelledby="navbarDropdownAdmin"
+              | Something
+                Something again
+                Something finally
+
+    -if alert
+      .alert *{class: [:"alert-info"]}
+        == alert
+
+    .container-fluid *{class: [:"col-12 py-md-3 pl-md-5 bd-content"]}
+      == yield
