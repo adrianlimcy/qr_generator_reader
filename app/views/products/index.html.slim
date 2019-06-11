@@ -1,0 +1,69 @@
+p id="notice"
+  == notice
+
+h1
+  | Products
+
+table class="table" id="datatable"
+  thead
+    tr
+      th
+        | Name
+      th
+        | Description
+      th
+        | Product code
+      th
+        | QR Image
+      th
+        | Active
+      th
+        | Show
+      th
+        | Edit
+      th
+        | Delete
+  tfoot
+    tr
+      th
+        | Name
+      th
+        | Description
+      th
+        | Product code
+      th
+        | QR Image
+      th
+        | Active
+      th
+        | Show
+      th
+        | Edit
+      th
+        | Delete
+  tbody
+    - @products.each do |product|
+      tr
+        td
+          == product.name
+        td
+          == product.description
+        td
+          == product.product_code
+        td
+          - qr_image = RQRCode::QRCode.new(product.description).as_svg(offset: 0, color: '000',
+                    shape_rendering: 'crispEdges',
+                    module_size: 11)
+          == qr_image
+        td
+          == product.active
+        td
+          == link_to 'Show', product
+        td
+          == link_to 'Edit', edit_product_path(product)
+        td
+          == link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+== link_to 'New Product', new_product_path, class: "btn btn-primary"
