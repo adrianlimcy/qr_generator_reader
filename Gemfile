@@ -46,6 +46,7 @@ gem "slim-rails", :require => false
 gem 'simple_form'
 gem 'rqrcode'
 gem 'gaffe'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

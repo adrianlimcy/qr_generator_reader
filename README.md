@@ -5,7 +5,7 @@ This is a simple experiment to:
 2.  read the QR code
 
 #gems loaded for testing
-1.  rqr https://github.com/whomwah/rqrcode - the gem that generates the qr code
+1.  rqrcode https://github.com/whomwah/rqrcode - the gem that generates the qr code
 2.  gaffee https://github.com/mirego/gaffe - for nicer error pages
 
 #typical gems

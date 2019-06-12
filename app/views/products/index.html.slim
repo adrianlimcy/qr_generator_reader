@@ -51,10 +51,13 @@ table class="table" id="datatable"
         td
           == product.product_code
         td
-          - qr_image = RQRCode::QRCode.new(product.description).as_svg(offset: 0, color: '000',
-                    shape_rendering: 'crispEdges',
-                    module_size: 11)
-          == qr_image
+          - image = RQRCode::QRCode.new(product.description, size:6)
+          - svg = image.as_svg(offset: 0, color: '000',
+                                    shape_rendering: 'crispEdges',
+                                    module_size: 4)
+
+          == svg
+
         td
           == product.active
         td
@@ -62,7 +65,7 @@ table class="table" id="datatable"
         td
           == link_to 'Edit', edit_product_path(product)
         td
-          == link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+          == link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }
 
 br
 
